@@ -38,5 +38,18 @@ class IntervenantRepository {
         $ligne = $stmt->fetchAll();
         return $ligne;
     }
+    
+    public static function newPass($password1) {
+        $sql = "update intervenant set password = md5(:password) where id = :id";
+        $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
+        $stmt->bindValue(":id", $_SESSION['admin']['id']);
+        $stmt->bindValue(":password", $password1);
+        $res = $stmt->execute();
+        if($res) {
+            return $res;
+        }
+        $ligne = $stmt->fetch();
+        return $ligne;
+    }
 
 }

@@ -14,14 +14,16 @@
     </head>
     <body>
         <div class="wrapper fadeInDown">
-            <div id="formContent">
+            <div class="col-6">
                 <div class="fadeIn first">
                     <img src="images/gmagro.png" id="icon" alt="User Icon" />
                 </div>
                 <form action="?uc=intervenant&action=check" method="post">
                     <input type="text" id="mail" class="fadeIn second" name="mail" placeholder="Adresse mail" required>
                     <input type="password" id="password" class="fadeIn third" name="password" placeholder="Mot de passe" required>
-                    <input type="submit" class="fadeIn fourth" value="Connexion">
+                    <div class="col-md-3 offset-md-3">
+                        <input type="submit" class="fadeIn fourth" value="Connexion">
+                    </div>
                 </form>
             </div>
         </div>

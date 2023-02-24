@@ -18,6 +18,7 @@
                         <th scope="col">Id</th>
                         <th scope="col">Nom</th>
                         <th scope="col">Prénom</th>
+                        <th class="text-center" scope="col">Edit</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,6 +28,7 @@
                                 <th scope="row">{$inter->getId()}</th>
                                 <td>{$inter->getNom()}</td>
                                 <td>{$inter->getPrenom()}</td>
+                                <td class="text-center"><a href="?uc=intervenant&action=intervmdp&nom={$inter->getNom()}&prenom={$inter->getPrenom()}&id={$inter->getId()}"><i class="bi bi-pen"></i></a></td>
                             </tr>
                         {/if}
                     {/foreach}

@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="css/index.css"/>
         <link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.css"/>
         <link rel="stylesheet" href="vendor/twbs/bootstrap-icons/font/bootstrap-icons.css">
+
+        <link rel="stylesheet" href="css/profile_layout.css"/>
     </head>
     <body>
         <div class="container">
@@ -73,6 +75,7 @@
 
     </div>
     <script src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="js/index.js"></script>
 
 </body>
 </html>
