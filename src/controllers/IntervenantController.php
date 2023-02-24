@@ -24,6 +24,12 @@ class IntervenantController extends IController {
             case 'index':
                 $this->run_index();
                 break;
+            case 'newpass':
+                $this->run_newpass();
+                break;
+            case 'intervmdp':
+                $this->run_intervmdp();
+                break;
             default:
                 $this->run_default_case("Intervenant", "?uc=intervenant&action=index");
         }
@@ -68,6 +74,31 @@ class IntervenantController extends IController {
         } else {
             echo "pas de mail et pas de password";
         }
+    }
+
+    private function run_newpass() {
+        $password1 = filter_input(INPUT_POST, 'password1', FILTER_SANITIZE_STRING);
+        $password2 = filter_input(INPUT_POST, 'password2', FILTER_SANITIZE_STRING);
+        if ($password1 && $password2) {
+            $newPass = IntervenantRepository::newPass($password1);
+            if ($newPass) {
+                $this->smarty->assign('action', 'Votre mot de passe est bien changer');
+                $this->smarty->display('intervenant/home_intervenant.tpl');
+            } else {
+                $this->display_info("Problème de bdd", "Votre mdp na pas pu être changer dans la base", "index.php");
+            }
+        } else {
+            $this->display_info("Problème de mdp", "Votre mdp na pas pu être récupérer", "index.php");
+        }
+    }
+    
+    private function run_intervmdp() {
+        $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_STRING);
+        $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_STRING);
+        $prenomd = "ejhiuqhdq";
+        $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_STRING);
+        $this->smarty->assign('action', 'Nouveau mot de passe pour');
+        $this->smarty->display('intervenant/mdp_intervenant.tpl');
     }
 
     private function run_index() {
