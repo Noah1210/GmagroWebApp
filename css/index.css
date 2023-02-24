@@ -1,0 +1,39 @@
+
+.container{
+    margin-top: 10px ;
+}
+#div_identite{
+    text-align: center ;
+    background-color: #e0fcfc ;
+    border-width: 2px ;
+    border-style: solid ;
+    border-color: #6666ff ;
+    padding: 15px ;
+    border-radius: 8px ;
+}
+#div_identite:hover{
+    background-color: #ccffff ;
+}
+#div_menu{
+    border-width: 2px ;
+    border-style: solid ;
+    border-color: #6666ff ;
+    border-radius: 8px ;
+    background-color: #e0fcfc ;
+}
+#div_menu:hover{
+    background-color: #dffafa ;
+}
+#div_logo{
+    text-align: center ;
+}
+#div_contenu{
+    padding: 10px ;
+}
+
+#div_bread{
+    padding: 10px ;
+}
+#div_action{
+
+}
