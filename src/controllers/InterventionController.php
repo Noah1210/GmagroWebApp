@@ -2,6 +2,7 @@
 
 namespace controllers;
 
+
 class InterventionController extends IController {
 
     public function __construct($smarty) {
@@ -20,6 +21,8 @@ class InterventionController extends IController {
 
     private function run_index() {
         $_SESSION['navs'] = ["Interventions" => "?uc=intervention&action=index"];
+        $interventions = \repositories\InterventionRepository::getInterventions($_SESSION['admin']['site_uai']);
+        $this->smarty->assign('interventions', $interventions);
         $this->smarty->display('intervention/index_intervention.tpl');
     }
 

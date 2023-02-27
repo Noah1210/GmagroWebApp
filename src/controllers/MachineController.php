@@ -21,6 +21,7 @@ class MachineController extends IController {
     private function run_index() {
         $_SESSION['navs'] = ["Machines" => "?uc=machine&action=index"];
         $this->smarty->display('machine/index_machine.tpl');
+        
     }
 
 }
