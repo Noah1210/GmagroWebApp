@@ -38,14 +38,99 @@ class IntervenantRepository {
         $ligne = $stmt->fetchAll();
         return $ligne;
     }
-    
+
     public static function newPass($password1) {
         $sql = "update intervenant set password = md5(:password) where id = :id";
         $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
         $stmt->bindValue(":id", $_SESSION['admin']['id']);
         $stmt->bindValue(":password", $password1);
         $res = $stmt->execute();
-        if($res) {
+        if ($res) {
+            return $res;
+        }
+        $ligne = $stmt->fetch();
+        return $ligne;
+    }
+
+    public static function newintervmdp($password1, $id ) {
+        $sql = "update intervenant set password = md5(:password) where id = :id";
+        $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
+        $stmt->bindValue(":id", $id);
+        $stmt->bindValue(":password", $password1);
+        $res = $stmt->execute();
+        if ($res) {
+            return $res;
+        }
+        $ligne = $stmt->fetch();
+        return $ligne;
+    }
+    
+    public static function enableinterv($id) {
+        $sql = "update intervenant set actif = 1 where id = :id";
+        $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
+        $stmt->bindValue(":id", $id);
+        $res = $stmt->execute();
+        if ($res) {
+            return $res;
+        }
+        $ligne = $stmt->fetch();
+        return $ligne;
+    }
+    
+    public static function disableinterv($id) {
+        $sql = "update intervenant set actif = 0 where id = :id";
+        $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
+        $stmt->bindValue(":id", $id);
+        $res = $stmt->execute();
+        if ($res) {
+            return $res;
+        }
+        $ligne = $stmt->fetch();
+        return $ligne;
+    }
+    
+    public static function deleteinterv($id) {
+        $sql = "delete from intervenant where id = :id";
+        $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
+        $stmt->bindValue(":id", $id);
+        $res = $stmt->execute();
+        if ($res) {
+            return $res;
+        }
+        $ligne = $stmt->fetch();
+        return $ligne;
+    }
+    
+    public static function addinterv($nom, $prenom, $mail, $password, $actif, $role) {
+        $sql = "insert into intervenant (nom, prenom, mail, password, actif, role_code, site_uai, cle) values (:nom, :prenom, :mail, md5(:password), :actif, :role, :site, 1)";
+        $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
+        $stmt->bindValue(":nom", $nom);
+        $stmt->bindValue(":prenom", $prenom);
+        $stmt->bindValue(":mail", $mail);
+        $stmt->bindValue(":password", $password);
+        $stmt->bindValue(":actif", $actif);
+        $stmt->bindValue(":role", $role);
+        $stmt->bindValue(":site", $_SESSION['admin']['site_uai']);
+        $res = $stmt->execute();
+        if ($res) {
+            return $res;
+        }
+        $ligne = $stmt->fetch();
+        return $ligne;
+    }
+    
+    public static function importInterv($nom, $prenom, $mail, $password, $actif, $role) {
+        $sql = "insert into intervenant (nom, prenom, mail, password, actif, role_code, site_uai, cle) values (:nom, :prenom, :mail, md5(:password), :actif, :role, :site, 1)";
+        $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
+        $stmt->bindValue(":nom", $nom);
+        $stmt->bindValue(":prenom", $prenom);
+        $stmt->bindValue(":mail", $mail);
+        $stmt->bindValue(":password", $password);
+        $stmt->bindValue(":actif", $actif);
+        $stmt->bindValue(":role", $role);
+        $stmt->bindValue(":site", $_SESSION['admin']['site_uai']);
+        $res = $stmt->execute();
+        if ($res) {
             return $res;
         }
         $ligne = $stmt->fetch();

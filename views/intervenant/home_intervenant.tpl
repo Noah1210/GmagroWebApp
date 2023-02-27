@@ -18,7 +18,7 @@
             <input type="password" id="password2" class="fadeIn third" value = "" name="password2" placeholder="Password 2" required>
         </div>
     </form>
-    <button class="btn btn-primary" id="buttonProfile" onclick="verifyPassword();" value="Change password">wow</button>
+    <button class="btn btn-primary" id="buttonProfile" onclick="verifyPassword();" value="Change password">Modifier mdp</button>
     </div>
 
 
