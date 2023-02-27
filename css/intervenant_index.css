@@ -1,0 +1,18 @@
+.form-row{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.form-group{
+    margin-top: 10px;
+}
+
+.btnmail{
+    --bs-btn-padding-x: 6.75rem;
+    --bs-btn-padding-y: 0.375rem;
+}
+
+.btn{
+    margin-top: 20px;
+}
+
