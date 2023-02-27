@@ -39,7 +39,7 @@
                                         {else}
                                     <td class="text-center"><a href="?uc=intervenant&action=enableinterv&id={$inter->getId()}"><i class="bi bi-check-lg"></i></a></td>
                                         {/if}
-                                <td class="text-center"><a href="?uc=intervenant&action=deleteinterv&id={$inter->getId()}"><i class="bi bi-trash3-fill"></i></a></td>
+                                <td class="text-center"><a href="?uc=intervenant&action=deleteInterv&id={$inter->getId()}"><i class="bi bi-trash3-fill"></i></a></td>
                             </tr>
                         {/if}
                     {/foreach}

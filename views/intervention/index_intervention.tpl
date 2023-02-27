@@ -29,8 +29,8 @@
                                 <td>{$inter->getDh_debut()}</td>
                                 <td>{$inter->getCommentaire()}</td>
                                 <td>{$inter->getActivite()->getLibelle() }</td>
-                                <td>{$inter->getMachine_code()}//</td>
-                                
+                                <td>{$inter->getMachine_code()}</td>
+                                <td class="text-center"><a href="?uc=intervention&action=deleteInterv&id={$inter->getId()}"><i class="bi bi-trash3-fill"></i></a></td>
                             </tr>
                      
                     {/foreach}
