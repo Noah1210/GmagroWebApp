@@ -38,6 +38,8 @@ class IntervenantRepository {
         $ligne = $stmt->fetchAll();
         return $ligne;
     }
+    
+    
 
     public static function newPass($password1) {
         $sql = "update intervenant set password = md5(:password) where id = :id";
