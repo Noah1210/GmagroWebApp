@@ -30,7 +30,7 @@
                                 <td>{$inter->getCommentaire()}</td>
                                 <td>{$inter->getActivite()->getLibelle() }</td>
                                 <td>{$inter->getMachine_code()}//</td>
-
+                                
                             </tr>
                      
                     {/foreach}
