@@ -105,34 +105,22 @@ class IntervenantController extends IController {
 
     private function run_newpass() {
         $password1 = filter_input(INPUT_POST, 'password1', FILTER_SANITIZE_STRING);
-        $password2 = filter_input(INPUT_POST, 'password2', FILTER_SANITIZE_STRING);
-        if ($password1 && $password2) {
-            $newPass = IntervenantRepository::newPass($password1);
-            if ($newPass) {
-                $this->smarty->assign('action', 'Votre mot de passe est bien changer');
-                $this->smarty->display('intervenant/home_intervenant.tpl');
-            } else {
-                $this->display_info("Problème de bdd", "Votre mdp na pas pu être changer dans la base", "index.php");
-            }
+        $newPass = IntervenantRepository::newPass($password1);
+        if ($newPass) {
+            $this->smarty->assign('action', 'Votre mot de passe est bien changer');
+            $this->smarty->display('intervenant/home_intervenant.tpl');
         } else {
-            $this->display_info("Problème de mdp", "Votre mdp na pas pu être récupérer", "index.php");
+            $this->display_info("Problème de bdd", "Votre mdp na pas pu être changer dans la base", "index.php");
         }
     }
 
     private function run_intervmdp() {
-        $nom = filter_input(INPUT_GET, 'nom', FILTER_SANITIZE_STRING);
-        $prenom = filter_input(INPUT_GET, 'prenom', FILTER_SANITIZE_STRING);
-        $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-        $this->smarty->assign('action', "Nouveau mot de passe pour {$prenom} {$nom}");
-        $this->smarty->assign('id', "{$id}");
-        $this->smarty->display('intervenant/mdp_intervenant.tpl');
-    }
-
-    private function run_newintervmdp() {
         $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
         $password1 = filter_input(INPUT_POST, 'password1', FILTER_SANITIZE_STRING);
         $password2 = filter_input(INPUT_POST, 'password2', FILTER_SANITIZE_STRING);
-        if ($password1 && $password2) {
+        $nom = filter_input(INPUT_GET, 'nom', FILTER_SANITIZE_STRING);
+        $prenom = filter_input(INPUT_GET, 'prenom', FILTER_SANITIZE_STRING);
+        if ($password1) {
             $newPass = IntervenantRepository::newintervmdp($password1, $id);
             if ($newPass) {
                 $intervenants = IntervenantRepository::getAll();
@@ -142,7 +130,9 @@ class IntervenantController extends IController {
                 $this->display_info("Problème de bdd", "Le mot de passe na pas pu être changer dans la base", "index.php");
             }
         } else {
-            $this->display_info("Problème de mdp", "Le mot de passe na pas pu être récupérer", "index.php");
+            $this->smarty->assign('action', "Nouveau mot de passe pour {$prenom} {$nom}");
+            $this->smarty->assign('id', "{$id}");
+            $this->smarty->display('intervenant/mdp_intervenant.tpl');
         }
     }
 
@@ -271,9 +261,7 @@ class IntervenantController extends IController {
         $destinataire = filter_input(INPUT_POST, 'destinataire', FILTER_SANITIZE_STRING);
         $sujet = filter_input(INPUT_POST, 'sujet', FILTER_SANITIZE_STRING);
         $message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING);
-        
         $headers = "From:{$_SESSION['admin']['mail']}";
-//        $headers = "From: webmaster@example.com";
         $result = mail($destinataire, $sujet, $message, $headers);
         if ($result) {
             $intervenants = IntervenantRepository::getAll();

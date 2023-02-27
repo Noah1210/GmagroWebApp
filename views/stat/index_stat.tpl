@@ -9,5 +9,8 @@
 {/block}
 
 {block contenu}
-    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
 {/block}
