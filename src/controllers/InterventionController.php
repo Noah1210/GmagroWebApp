@@ -17,6 +17,7 @@ class InterventionController extends IController {
                 break;
             case 'deleteInterv':
                 $this->run_delete();
+                break;
             default:
                 $this->run_default_case("Intervention", "?uc=intervention&action=index");
         }

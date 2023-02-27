@@ -5,7 +5,7 @@ namespace repositories;
 class InterventionRepository {
 
     public static function getInterventions($site_uai) {
-        $sql = "SELECT * 
+        $sql = "SELECT intervention.* 
         FROM intervention 
 	inner join intervenant on intervention.intervenant_id = intervenant.id 
         where site_uai = :site_uai
@@ -21,9 +21,7 @@ class InterventionRepository {
     }
 
     public static function deleteInterventions($id) {
-        $sql = "delete from Intervention "
-                . "inner join intervention_intervenant "
-                . "on intervention.id = intervention_intervenant.intervenant_id where intervenant_id=:id";
+        $sql = "delete from intervention  where id=:id";
         $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
         $stmt->bindParam(":id", $id);
         $res = $stmt->execute();
