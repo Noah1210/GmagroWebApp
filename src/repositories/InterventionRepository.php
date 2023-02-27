@@ -21,12 +21,16 @@ class InterventionRepository {
     }
 
     public static function deleteInterventions($id) {
-        $sql = "delete from Intervention where id=:id";
+        $sql = "delete from Intervention "
+                . "inner join intervention_intervenant "
+                . "on intervention.id = intervention_intervenant.intervenant_id where intervenant_id=:id";
         $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
-        $st->bindParam(":id", $id);
-        $stmt->execute();
-        $stmt->setFetchMode(\PDO::FETCH_CLASS, '\entities\Intervention');
-        $ligne = $stmt->fetchAll();
+        $stmt->bindParam(":id", $id);
+        $res = $stmt->execute();
+        if ($res) {
+            return $res;
+        }
+        $ligne = $stmt->fetch();
         return $ligne;
     }
 
