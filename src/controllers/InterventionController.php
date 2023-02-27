@@ -1,7 +1,7 @@
 <?php
 
 namespace controllers;
-
+use repositories\InterventionRepository;
 
 class InterventionController extends IController {
 

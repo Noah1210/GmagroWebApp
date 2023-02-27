@@ -13,7 +13,7 @@ class InterventionRepository {
         ORDER BY dh_debut desc ;";
 
         $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
-        $st->bindParam(":site_uai", $site_uai);
+        $stmt->bindParam(":site_uai", $site_uai);
         $stmt->execute();
         $stmt->setFetchMode(\PDO::FETCH_CLASS, '\entities\Intervention');
         $ligne = $stmt->fetchAll();

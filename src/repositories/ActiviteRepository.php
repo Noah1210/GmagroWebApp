@@ -10,10 +10,10 @@ class ActiviteRepository {
         where code = :code ;";
 
         $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
-        $st->bindParam(":code", $code);
+        $stmt->bindParam(":code", $code);
         $stmt->execute();
         $stmt->setFetchMode(\PDO::FETCH_CLASS, '\entities\Activite');
-        $ligne = $stmt->fetchAll();
+        $ligne = $stmt->fetch();
         return $ligne;
     }
 
