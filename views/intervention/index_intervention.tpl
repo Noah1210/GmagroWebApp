@@ -23,23 +23,21 @@
         </thead>
         <tbody>
             {foreach $interventions as $inter}
-
                 <tr>
-
                     <td>{$inter->getDh_debut()}</td>
                     <td class="text-center">{$inter->getCommentaire()} <a href="?uc=intervention&action=getCommentaire&id={$inter->getId()}"><i class="bi bi-pencil-square"></i></a></td>
                     <td>{$inter->getActivite()->getLibelle() }</td>
                     <td>{$inter->getMachine_code()}</td>
                     <td class="text-center">
-                        {if $inter->getDh_debut()}
-                            <a href="?uc=intervention&action=deleteInterv&id={$inter->getId()}"><i class="bi bi-trash3-fill"></i></a>
+                        <a href="?uc=intervention&action=deleteInterv&id={$inter->getId()}"><i class="bi bi-trash3-fill"></i></a>
+                    </td>
+                    <td class="text-center">
+                        {if $inter->intervention_terminee}    
+                            <i class="bi bi-check-lg"></i>
+                        {/if}
+                    </td>
+                </tr>
 
-
-                        </td>
-                    {else if $inter->getDh_fin()}
-                        <td class="text-center"><i class="bi bi-check-lg"></i></a></td>
-                    </tr>
-                {/if}
 
             {/foreach}
 

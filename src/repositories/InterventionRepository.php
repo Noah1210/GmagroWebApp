@@ -5,11 +5,15 @@ namespace repositories;
 class InterventionRepository {
 
     public static function getInterventions($site_uai) {
-        $sql = "SELECT intervention.* 
+        $sql = "SELECT intervention.* ,
+        case 
+        when dh_fin is null then 0 
+        when dh_fin > now() then 0
+        else 1 
+        end as intervention_terminee
         FROM intervention 
 	inner join intervenant on intervention.intervenant_id = intervenant.id 
-        where site_uai = :site_uai
-        
+        where site_uai = :site_uai       
         ORDER BY dh_debut desc ;";
 
         $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
@@ -52,8 +56,7 @@ class InterventionRepository {
         return $ligne;
     }
 
-    
-     /**
+    /**
      * 
      * @param int $id
      * @return Intervention
@@ -68,7 +71,5 @@ class InterventionRepository {
         $ligne = $stmt->fetch();
         return $ligne;
     }
-
-    
 
 }
