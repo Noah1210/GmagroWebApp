@@ -32,7 +32,7 @@
                         <a href="?uc=intervention&action=deleteInterv&id={$inter->getId()}"><i class="bi bi-trash3-fill"></i></a>
                     </td>
                     <td class="text-center">
-                        {if $inter->intervention_terminee}    
+                        {if $inter->getIntervention_terminee()}    
                             <i class="bi bi-check-lg"></i>
                         {/if}
                     </td>

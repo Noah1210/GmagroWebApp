@@ -20,6 +20,7 @@ class Intervention {
     private $cause_objet_code;
     private $symptome_defaut_code;
     private $symptome_objet_code;
+    private $intervention_terminee;
 
     public function __construct() {
         
@@ -92,6 +93,15 @@ class Intervention {
     public function getActivite() {
         return \repositories\ActiviteRepository::getActivite($this->activite_code);
     }
+    function getIntervention_terminee() {
+        return $this->intervention_terminee;
+    }
+
+    function setIntervention_terminee($intervention_terminee): void {
+        $this->intervention_terminee = $intervention_terminee;
+    }
+
+
     
    
     
