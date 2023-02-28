@@ -88,10 +88,10 @@ class Intervention {
     public function getSymptome_objet_code() {
         return $this->symptome_objet_code;
     }
+    
     public function getActivite() {
         return \repositories\ActiviteRepository::getActivite($this->activite_code);
     }
-
     
    
     
