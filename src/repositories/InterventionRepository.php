@@ -52,6 +52,12 @@ class InterventionRepository {
         return $ligne;
     }
 
+    
+     /**
+     * 
+     * @param int $id
+     * @return Intervention
+     */
     public static function updateCom($id, $commentaire) {
         $sql = "update intervention set commentaire=:commentaire where id = :id";
         $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
@@ -62,5 +68,7 @@ class InterventionRepository {
         $ligne = $stmt->fetch();
         return $ligne;
     }
+
+    
 
 }

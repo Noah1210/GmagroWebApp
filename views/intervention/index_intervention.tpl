@@ -18,7 +18,7 @@
                 <th scope="col">Activité</th>
                 <th scope="col">Machine</th>
                 <th scope="col">Supprimer</th>
-                <th scope="col">Terminer</th>
+                <th scope="col">Terminée</th>
             </tr>
         </thead>
         <tbody>
@@ -30,8 +30,12 @@
                                 <td class="text-center">{$inter->getCommentaire()} <a href="?uc=intervention&action=getCommentaire&id={$inter->getId()}"><i class="bi bi-pencil-square"></i></a></td>
                                 <td>{$inter->getActivite()->getLibelle() }</td>
                                 <td>{$inter->getMachine_code()}</td>
-                                <td class="text-center"><a href="?uc=intervention&action=deleteInterv&id={$inter->getId()}"><i class="bi bi-trash3-fill"></i></a></td>
-                                <td><i class="bi bi-check-lg"></i></td>
+                                <td class="text-center">
+                                   
+                                    <a href="?uc=intervention&action=deleteInterv&id={$inter->getId()}"><i class="bi bi-trash3-fill"></i></a>
+                                    
+                                </td>
+                                <td class="text-center"><i class="bi bi-check-lg"></i></a></td>
                             </tr>
                      
                     {/foreach}

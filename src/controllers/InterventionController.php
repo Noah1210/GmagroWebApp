@@ -26,6 +26,7 @@ class InterventionController extends IController {
                     $this->run_getCom();
                 }
                 break;
+            
 //            case 'annulerCommentaire':
 //                $this->run_retour();
 //                break;
@@ -71,9 +72,8 @@ class InterventionController extends IController {
         $_SESSION['navs'] = ["Interventions" => "?uc=intervention&action=index"];
         $intervention = \repositories\InterventionRepository::updateCom($idInterv, $nouveauComment);
         header('Location: ?uc=intervention&action=index');
-        
     }
 
-
+    
 
 }
