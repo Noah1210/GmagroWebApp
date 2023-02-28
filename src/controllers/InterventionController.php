@@ -18,6 +18,17 @@ class InterventionController extends IController {
             case 'deleteInterv':
                 $this->run_delete();
                 break;
+            case 'getCommentaire':
+                $nouveauComment = filter_input(INPUT_POST, 'nouveauComment', FILTER_SANITIZE_STRING);
+                if ($nouveauComment) {
+                    $this->run_updateCom($nouveauComment);
+                } else {
+                    $this->run_getCom();
+                }
+                break;
+//            case 'annulerCommentaire':
+//                $this->run_retour();
+//                break;
             default:
                 $this->run_default_case("Intervention", "?uc=intervention&action=index");
         }
@@ -31,13 +42,11 @@ class InterventionController extends IController {
     }
 
     private function run_delete() {
-        //$_SESSION['navs'] = ["Interventions" => "?uc=intervention&action=deleteInterv"];
+
         $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
-        echo "$id";
         if ($id) {
             $delete = InterventionRepository::deleteInterventions($id);
             if ($delete) {
-                echo "$id";
                 $interventions = InterventionRepository::getInterventions($_SESSION['admin']['site_uai']);
                 $this->smarty->assign('interventions', $interventions);
                 $this->smarty->display('intervention/index_intervention.tpl');
@@ -48,5 +57,23 @@ class InterventionController extends IController {
             $this->display_info("Problème d'url", "L'intervenant na pas pu être supprimé", "index.php");
         }
     }
+
+    private function run_getCom() {
+        $idInterv = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+        $_SESSION['navs'] = ["Interventions" => "?uc=intervention&action=index"];
+        $intervention = \repositories\InterventionRepository::getById($idInterv);
+        $this->smarty->assign('intervention', $intervention);
+        $this->smarty->display('intervention/comment_intervention.tpl');
+    }
+
+    private function run_updateCom($nouveauComment) {
+        $idInterv = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+        $_SESSION['navs'] = ["Interventions" => "?uc=intervention&action=index"];
+        $intervention = \repositories\InterventionRepository::updateCom($idInterv, $nouveauComment);
+        header('Location: ?uc=intervention&action=index');
+        
+    }
+
+
 
 }

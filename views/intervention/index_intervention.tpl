@@ -27,10 +27,11 @@
                             <tr>
                                 
                                 <td>{$inter->getDh_debut()}</td>
-                                <td>{$inter->getCommentaire()}</td>
+                                <td class="text-center">{$inter->getCommentaire()} <a href="?uc=intervention&action=getCommentaire&id={$inter->getId()}"><i class="bi bi-pencil-square"></i></a></td>
                                 <td>{$inter->getActivite()->getLibelle() }</td>
                                 <td>{$inter->getMachine_code()}</td>
                                 <td class="text-center"><a href="?uc=intervention&action=deleteInterv&id={$inter->getId()}"><i class="bi bi-trash3-fill"></i></a></td>
+                                <td><i class="bi bi-check-lg"></i></td>
                             </tr>
                      
                     {/foreach}
