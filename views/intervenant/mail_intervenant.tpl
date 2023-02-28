@@ -8,7 +8,7 @@
 {block contenu} 
     <link rel="stylesheet" href="css/intervenant_index.css"/>
     <div>
-        <form id="formMail" action="?uc=intervenant&action=sendMail" method="post">
+        <form id="formMail" action="?uc=intervenant&action=mailInterv" method="post">
             <div class="form-group col-md-4">
                 <label for="mailAdress">Email address </label>
                 <input type="email" class="form-control " id="mailAdress" name="destinataire" value="{$mail}">

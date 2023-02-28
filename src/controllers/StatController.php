@@ -21,6 +21,9 @@ class StatController extends IController {
     private function run_index() {
         $_SESSION['navs'] = ["Stats" => "?uc=stat&action=index"];
         $this->smarty->display('stat/index_stat.tpl');
+        $graph = IntervenantRepository::getGraph1();
+        $this->smarty->assign('graph1', $graph);
+        echo $graph['nom'];
     }
 
 }

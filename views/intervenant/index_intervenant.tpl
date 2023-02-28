@@ -32,12 +32,12 @@
                                 <th scope="row">{$inter->getId()}</th>
                                 <td>{$inter->getNom()}</td>
                                 <td>{$inter->getPrenom()}</td>
-                                <td class="text-center"><a href="?uc=intervenant&action=intervmdp&nom={$inter->getNom()}&prenom={$inter->getPrenom()}&id={$inter->getId()}"><i class="bi bi-pen"></i></a></td>
-                                <td class="text-center"><a href="?uc=intervenant&action=mailInterv&mail={$inter->getMail()}&nom={$inter->getNom()}&prenom={$inter->getPrenom()}"><i class="bi bi-envelope"></i></a></td>
+                                <td class="text-center"><a href="?uc=intervenant&action=intervmdp&id={$inter->getId()}}"><i class="bi bi-pen"></i></a></td>
+                                <td class="text-center"><a href="?uc=intervenant&action=mailInterv&id={$inter->getId()}"><i class="bi bi-envelope"></i></a></td>
                                         {if $inter->isActif() eq 1}
-                                    <td class="text-center"><a href="?uc=intervenant&action=disableinterv&id={$inter->getId()}"><i class="bi bi-slash-circle"></i></a></td>
+                                    <td class="text-center"><a href="?uc=intervenant&action=statusInterv&id={$inter->getId()}"><i class="bi bi-slash-circle"></i></a></td>
                                         {else}
-                                    <td class="text-center"><a href="?uc=intervenant&action=enableinterv&id={$inter->getId()}"><i class="bi bi-check-lg"></i></a></td>
+                                    <td class="text-center"><a href="?uc=intervenant&action=statusInterv&id={$inter->getId()}"><i class="bi bi-check-lg"></i></a></td>
                                         {/if}
                                 <td class="text-center"><a href="?uc=intervenant&action=deleteInterv&id={$inter->getId()}"><i class="bi bi-trash3-fill"></i></a></td>
                             </tr>
@@ -71,7 +71,7 @@
                 </tbody>
             </table>
 
-            <form class="form-horizontal" action="?uc=intervenant&action=importInterv" method="post" name="upload_excel" enctype="multipart/form-data">
+            <form class="form-horizontal" action="?uc=intervenant&action=importExportInterv" method="post" name="upload_excel" enctype="multipart/form-data">
                 <h3>Import/Export</h3>
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="filebutton">Select File</label>
@@ -87,7 +87,7 @@
                 </div>
             </form>
 
-            <form class="form-horizontal" action="?uc=intervenant&action=exportInterv" method="post" name="upload_excel"   
+            <form class="form-horizontal" action="?uc=intervenant&action=importExportInterv" method="post" name="upload_excel"   
                   enctype="multipart/form-data">
                 <div class="form-group">
                     <div class="col-md-4 col-md-offset-4">
