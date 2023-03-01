@@ -28,11 +28,12 @@
                             <tr>
                                 <th scope="row">{$cf->getCode()}</th>
                                 <td>{$cf->getLibelle()}</td>
-                                <td><i class="bi bi-pencil-square"></td>
-                                <td>
-                            
+
+                                    <td><i class="bi bi-pencil-square"></td>
+                                    <td>
+                                    {if $cf->getSite_uai()!= NULL}  
                                         <a href="?uc=csod&action=deleteCD&code={$cf->getCode()}"><i class="bi bi-trash3-fill"></i></a>
-                                 
+                                        {/if}
                                 </td>
 
                             </tr>
