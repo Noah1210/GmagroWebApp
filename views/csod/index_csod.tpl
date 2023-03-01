@@ -30,7 +30,9 @@
                                 <td>{$cf->getLibelle()}</td>
                                 <td><i class="bi bi-pencil-square"></td>
                                 <td>
-                                    <a href="?uc=intervention&action=deleteCD&site_uai={$cf->getSite_uai()}"><i class="bi bi-trash3-fill"></i></a>
+                            
+                                        <a href="?uc=csod&action=deleteCD&code={$cf->getCode()}"><i class="bi bi-trash3-fill"></i></a>
+                                 
                                 </td>
 
                             </tr>

@@ -25,10 +25,10 @@ class CSODController extends IController {
 
     private function run_index() {
         $_SESSION['navs'] = ["CSOD" => "?uc=csod&action=index"];
-        $causedefauts = \repositories\CSODRepository::getCauseDefaut($_SESSION['admin']['site_uai']);
-        $causeobjets = \repositories\CSODRepository::getCauseObjet($_SESSION['admin']['site_uai']);
-        $symptomedefauts = \repositories\CSODRepository::getSymptomeDef($_SESSION['admin']['site_uai']);
-        $symptomeobjets = \repositories\CSODRepository::getSymptomeObj($_SESSION['admin']['site_uai']);
+        $causedefauts = \repositories\CSODRepository::getCauseDefaut();
+        $causeobjets = \repositories\CSODRepository::getCauseObjet();
+        $symptomedefauts = \repositories\CSODRepository::getSymptomeDef();
+        $symptomeobjets = \repositories\CSODRepository::getSymptomeObj();
         $this->smarty->assign('causedefauts', $causedefauts);
         $this->smarty->assign('causeobjets', $causeobjets);
         $this->smarty->assign('symptomedefauts', $symptomedefauts);
@@ -37,19 +37,12 @@ class CSODController extends IController {
     }
 
     private function run_delete() {
-
-        $site_uai = filter_input(INPUT_GET, 'site_uai', FILTER_SANITIZE_STRING);
-        if ($site_uai) {
-            $delete = CSODRepository::deleteCD($site_uai);
-            if ($delete) {
-                $causedefauts = CSODRepository::getCauseDefaut($_SESSION['admin']['site_uai']);
-                $this->smarty->assign('causedefauts', $causedefauts);
-                $this->smarty->display('csod/index_csod.tpl');
-            } else {
-                $this->display_info("Problème de bdd", "L'intervenant na pas pu être supprimé de la base", "index.php");
-            }
+        $code = filter_input(INPUT_GET, 'code', FILTER_SANITIZE_STRING);
+        $delete = CSODRepository::deleteCD($code);
+        if ($delete) {
+           header('Location: ?uc=csod&action=index') ;
         } else {
-            $this->display_info("Problème d'url", "L'intervenant na pas pu être supprimé", "index.php");
+            $this->display_info("Problème de bdd", "L'csod  na pas pu être supprimé de la base", "index.php");
         }
     }
 
