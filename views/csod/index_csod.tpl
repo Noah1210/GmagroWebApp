@@ -24,27 +24,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                        {foreach $causedefauts as $cf}
+                            <tr>
+                                <th scope="row">{$cf->getCode()}</th>
+                                <td>{$cf->getLibelle()}</td>
+                                <td><i class="bi bi-pencil-square"></td>
+                                <td>
+                                    <a href="?uc=intervention&action=deleteCD&site_uai={$cf->getSite_uai()}"><i class="bi bi-trash3-fill"></i></a>
+                                </td>
 
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
+                            </tr>
 
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-
-
-                        </tr>
+                        {/foreach}
                     </tbody>
                 </table>
             </div>
@@ -61,27 +52,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                        {foreach $causeobjets as $co}
+                            <tr>
+                                <th scope="row">{$co->getCode()}</th>
+                                <td>{$co->getLibelle()}</td>
+                                <td><i class="bi bi-pencil-square"></td>
+                                <td><i class="bi bi-trash3-fill"></td>
 
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-
-
-                        </tr>
+                            </tr>
+                        {/foreach}
                     </tbody>
                 </table>
             </div>
@@ -101,27 +80,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                        {foreach $symptomedefauts as $sd}
+                            <tr>
+                                <th scope="row">{$sd->getCode()}</th>
+                                <td>{$sd->getLibelle()}</td>
+                                <td><i class="bi bi-pencil-square"></td>
+                                <td><i class="bi bi-trash3-fill"></td>
 
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-
-
-                        </tr>
+                            </tr>
+                        {/foreach}
                     </tbody>
                 </table>
             </div>
@@ -138,27 +105,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-
-
-                        </tr>
+                        {foreach $symptomeobjets as $so}
+                            <tr>
+                                <th scope="row">{$so->getCode()}</th>
+                                <td>{$so->getLibelle()}</td>
+                                <td><i class="bi bi-pencil-square"></td>
+                                <td><i class="bi bi-trash3-fill"></td>
+                            </tr>
+                        {/foreach}
                     </tbody>
                 </table>
             </div>

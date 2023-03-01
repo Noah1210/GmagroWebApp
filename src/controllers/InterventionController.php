@@ -26,10 +26,7 @@ class InterventionController extends IController {
                     $this->run_getCom();
                 }
                 break;
-            
-//            case 'annulerCommentaire':
-//                $this->run_retour();
-//                break;
+
             default:
                 $this->run_default_case("Intervention", "?uc=intervention&action=index");
         }
