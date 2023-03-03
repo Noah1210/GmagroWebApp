@@ -165,7 +165,7 @@ class IntervenantRepository {
         $ligne = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         return $ligne;
     }
-    
+
     public static function getGraph2() {
         $sql = "SELECT * FROM SecondGraph;";
         $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
@@ -173,13 +173,39 @@ class IntervenantRepository {
         $ligne = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         return $ligne;
     }
-    
-    public static function getGraph3() {
-        $sql = "SELECT * FROM ThirdGraph;";
+
+    public static function getIntervenantIntervention() {
+        $sql = "select id, prenom from intervention_intervenant inner join intervenant on intervention_intervenant.intervenant_id = intervenant.id ;";
         $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
         $stmt->execute();
         $ligne = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         return $ligne;
-    }   
+    }
+
+    public static function getGraph3ByInterv($id) {
+        $sql = "SELECT * FROM ThirdGraph where id = :id ;";
+        $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
+        $stmt->bindValue(":id", $id);
+        $stmt->execute();
+        $ligne = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $ligne;
+    }
+    
+    public static function getMachine () {
+        $sql = "select machine_code from intervention";
+        $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
+        $stmt->execute();
+        $ligne = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $ligne;
+    }
+
+    public static function getGraph4ByMachine($code) {
+        $sql = "SELECT * FROM FourthGraph where machine_code = :code ;";
+        $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
+        $stmt->bindValue(":code", $code);
+        $stmt->execute();
+        $ligne = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $ligne;
+    }
 
 }

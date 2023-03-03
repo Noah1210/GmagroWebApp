@@ -27,9 +27,28 @@ class StatController extends IController {
         $graph2 = \repositories\IntervenantRepository::getGraph2();
         $this->smarty->assign('graph2', $graph2);
         
-        $graph3 = \repositories\IntervenantRepository::getGraph3();
+        $intervenants = \repositories\IntervenantRepository::getIntervenantIntervention();
+        $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
+        if(!$id){
+            $id = '4';
+        }
+        $graph3 = \repositories\IntervenantRepository::getGraph3ByInterv($id);
+        
+        $machine = \repositories\IntervenantRepository::getMachine();
+        $code = filter_input(INPUT_GET, 'code', FILTER_SANITIZE_STRING);
+        if(!$code){
+            $code = '3DMETAL1';
+        }
+        $graph4 = \repositories\IntervenantRepository::getGraph4ByMachine($code);
+        
+        $this->smarty->assign('intervenants', $intervenants);
         $this->smarty->assign('graph3', $graph3);
         
+        $this->smarty->assign('machine', $machine);
+        $this->smarty->assign('graph4', $graph4);
+        
+        $this->smarty->assign('machineSel', $code);
+        $this->smarty->assign('intervSel', $id);
         $this->smarty->display('stat/index_stat.tpl');
 //        foreach ($graph as $gr) {
 //            echo $gr['nom'];
