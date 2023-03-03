@@ -39,8 +39,11 @@ class CSODController extends IController {
     private function run_delete() {
         $code = filter_input(INPUT_GET, 'code', FILTER_SANITIZE_STRING);
         $delete = CSODRepository::deleteCD($code);
+        $delete = CSODRepository::deleteCO($code);
+        $delete = CSODRepository::deleteSD($code);
+        $delete = CSODRepository::deleteSO($code);
         if ($delete) {
-           header('Location: ?uc=csod&action=index') ;
+            header('Location: ?uc=csod&action=index');
         } else {
             $this->display_info("Problème de bdd", "L'csod  na pas pu être supprimé de la base", "index.php");
         }

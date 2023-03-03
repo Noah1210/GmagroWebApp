@@ -63,5 +63,26 @@ class CSODRepository {
         $stmt->bindParam(":code", $code);
         return $stmt->execute();
     }
+    public static function deleteCO($code) {
+        $sql = "delete from cause_objet  where code=:code and site_uai=:site_uai;";
+        $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
+        $stmt->bindParam(":site_uai", $_SESSION['admin']['site_uai']);
+        $stmt->bindParam(":code", $code);
+        return $stmt->execute();
+    }
+    public static function deleteSO($code) {
+        $sql = "delete from symptome_objet  where code=:code and site_uai=:site_uai;";
+        $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
+        $stmt->bindParam(":site_uai", $_SESSION['admin']['site_uai']);
+        $stmt->bindParam(":code", $code);
+        return $stmt->execute();
+    }
+    public static function deleteSD($code) {
+        $sql = "delete from symptome_defaut where code=:code and site_uai=:site_uai;";
+        $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
+        $stmt->bindParam(":site_uai", $_SESSION['admin']['site_uai']);
+        $stmt->bindParam(":code", $code);
+        return $stmt->execute();
+    }
 
 }
