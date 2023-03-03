@@ -33,6 +33,10 @@ class CSOD {
     function setSite_uai($site_uai): void {
         $this->site_uai = $site_uai;
     }
+    
+    function isEditable():bool{
+        return ( ($this->site_uai != null) && ($this->site_uai == $_SESSION['admin']['site_uai']) )  ;
+    }
 
 
     

@@ -28,14 +28,14 @@
                             <tr>
                                 <th scope="row">{$cf->getCode()}</th>
                                 <td>{$cf->getLibelle()}</td>
+                                {if $cf->isEditable()}
+                                    <td><i class="bi bi-pencil-square"></td>
+                                    <td>
 
-                                <td><i class="bi bi-pencil-square"></td>
-                                <td>
-                                    {if $cf->getSite_uai()!= NULL}  
                                         <a href="?uc=csod&action=deleteCD&code={$cf->getCode()}"><i class="bi bi-trash3-fill"></i></a>
-                                        {/if}
-                                </td>
 
+                                    </td>
+                                {/if}
                             </tr>
 
                         {/foreach}
@@ -59,16 +59,16 @@
                             <tr>
                                 <th scope="row">{$co->getCode()}</th>
                                 <td>{$co->getLibelle()}</td>
-
-                                <td>
-
-                                    <i class="bi bi-pencil-square"></td>
+                                {if $co->isEditable()} 
                                     <td>
-                                    {if $co->getSite_uai()!= NULL}  
+
+                                        <i class="bi bi-pencil-square"></td>
+                                    <td>
+
                                         <a href="?uc=csod&action=deleteCO&code={$co->getCode()}"><i class="bi bi-trash3-fill"></i></a>
-                                        {/if}
-                                </td>
-                            
+                                    </td>
+                                {/if}
+
 
                             </tr>
                         {/foreach}
@@ -95,9 +95,13 @@
                             <tr>
                                 <th scope="row">{$sd->getCode()}</th>
                                 <td>{$sd->getLibelle()}</td>
-                                <td><i class="bi bi-pencil-square"></td>
-                                <td><i class="bi bi-trash3-fill"></td>
-
+                                {if $sd->isEditable()} 
+                                    <td>
+                                        <i class="bi bi-pencil-square"></td>
+                                    <td>
+                                        <a href="?uc=csod&action=deleteSD&code={$co->getCode()}"><i class="bi bi-trash3-fill"></i></a>
+                                    </td>
+                                {/if}
                             </tr>
                         {/foreach}
                     </tbody>
@@ -120,8 +124,14 @@
                             <tr>
                                 <th scope="row">{$so->getCode()}</th>
                                 <td>{$so->getLibelle()}</td>
-                                <td><i class="bi bi-pencil-square"></td>
-                                <td><i class="bi bi-trash3-fill"></td>
+                                <td>
+                                    {if $so->isEditable()} 
+                                        <i class="bi bi-pencil-square">
+                                    </td>
+                                    <td>
+                                       <a href="?uc=csod&action=deleteSO&code={$co->getCode()}"><i class="bi bi-trash3-fill"></i></a>
+                                    </td>
+                                {/if}
                             </tr>
                         {/foreach}
                     </tbody>
