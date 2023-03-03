@@ -18,6 +18,10 @@ class CSODController extends IController {
             case 'deleteCD':
                 $this->run_delete();
                 break;
+            case 'editCD':
+                $this->run_editCD();
+                break;
+
             default:
                 $this->run_default_case("CSOD", "?uc=csod&action=index");
         }
@@ -46,6 +50,24 @@ class CSODController extends IController {
             header('Location: ?uc=csod&action=index');
         } else {
             $this->display_info("Problème de bdd", "L'csod  na pas pu être supprimé de la base", "index.php");
+        }
+    }
+
+    private function run_editCD() {
+        $code = filter_input(INPUT_GET, 'code', FILTER_SANITIZE_STRING);
+        $newCode = filter_input(INPUT_POST, 'codeCD', FILTER_SANITIZE_STRING);
+        $newLib = filter_input(INPUT_POST, 'libCD', FILTER_SANITIZE_STRING);
+        if ($newCode && $newLib) {
+//            $newCode = \repositories\CSODRepository::updateCD($newLib, $newCode);
+//            $newLib = \repositories\CSODRepository::updateCD($newLib, $newCode);
+//            $this->smarty->assign('newCode', $newCode);
+//             $this->smarty->assign('newLib', $newLib);
+//            $this->smarty->display('csod/edit_csod.tpl');
+        } else {
+            $_SESSION['navs'] = ["CSOD" => "?uc=csod&action=edit"];
+            $CSOD = \repositories\CSODRepository::getCauseDefautByCode($code);
+            $this->smarty->assign('CSOD', $CSOD);
+            $this->smarty->display('csod/edit_csod.tpl');
         }
     }
 

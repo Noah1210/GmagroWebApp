@@ -16,6 +16,21 @@ class CSODRepository {
         $ligne = $stmt->fetchAll();
         return $ligne;
     }
+    
+     public static function getCauseDefautByCode($code) {
+        $sql = "SELECT cause_defaut.* 
+                from cause_defaut
+                where cause_defaut.site_uai =:site_uai or cause_defaut.site_uai is null and code=:code ";
+
+        $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
+        $stmt->bindParam(":site_uai", $_SESSION['admin']['site_uai']);
+        $stmt->bindParam(":code", $code);
+        $stmt->execute();
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, '\entities\CSOD');
+        $ligne = $stmt->fetch();
+        return $ligne;
+    }
+    
 
     public static function getCauseObjet() {
         $sql = "SELECT cause_objet.* 
@@ -84,5 +99,16 @@ class CSODRepository {
         $stmt->bindParam(":code", $code);
         return $stmt->execute();
     }
+      public static function updateCD($libelle, $code) {
+        $sql = "update intervention set libelle=:libelle and code=:code where code = :code";
+        $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
+        $stmt->bindValue(":libelle", $libelle);
+        $stmt->bindValue(":code", $code);
+        $stmt->execute();
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, '\entities\CSOD');
+        $ligne = $stmt->fetch();
+        return $ligne;
+    }
+   
 
 }

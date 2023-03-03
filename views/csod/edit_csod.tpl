@@ -5,19 +5,28 @@
 {/block}
 
 {block action}
-    
+
 {/block}
 
 {block contenu}
-    <form method="post" action="?uc=intervention&action=getCommentaire&id={$intervention->getId()}">
-        <div class="mb-3">
-            <label for="formGroupExampleInput" class="form-label"> {$intervention->getActivite()->getLibelle()} numéro {$intervention->getId()} sur {$intervention->getMachine_code()} le {$intervention->getDh_debut()} </label>
-            <input type="text" class="form-control" id="formGroupExampleInput" name="nouveauComment" placeholder="{$intervention->getCommentaire()}">
+
+    <div class="mb-3">  
+        <form method="post" action="?uc=csod&action=edit">
+            <div class="mb-3">
+                <label for="inputPassword2" class="visually-hidden">Password</label>
+                <input type="text" class="form-control" name="codeCD" value="{$CSOD->getCode()}">
+            </div>
             <br>
-            <button type="submit" class="btn btn-primary">Mettre à jour</button> &nbsp;   
+            <div class="mb-3">
+                <label for="inputPassword2" class="visually-hidden">Password</label>
+                <input type="codeCD" class="form-control" name="libCD" value="{$CSOD->getLibelle()}">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Modifier</button>   
         </div>
-    </form> 
-    <div class="mb-3">     
+        </form> 
+        <br>
+        
         <button onclick="window.location.href = '?uc=csod&action=index';" class="btn btn-primary">Annuler</button>
     </div>
 

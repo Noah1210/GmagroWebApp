@@ -26,7 +26,7 @@ class InterventionController extends IController {
                     $this->run_getCom();
                 }
                 break;
-
+          
             default:
                 $this->run_default_case("Intervention", "?uc=intervention&action=index");
         }
@@ -64,13 +64,6 @@ class InterventionController extends IController {
         $this->smarty->display('intervention/comment_intervention.tpl');
     }
 
-    private function run_updateCom($nouveauComment) {
-        $idInterv = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-        $_SESSION['navs'] = ["Interventions" => "?uc=intervention&action=index"];
-        $intervention = \repositories\InterventionRepository::updateCom($idInterv, $nouveauComment);
-        header('Location: ?uc=intervention&action=index');
-    }
 
-    
 
 }

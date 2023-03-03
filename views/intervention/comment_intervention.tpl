@@ -14,7 +14,7 @@
             <label for="formGroupExampleInput" class="form-label"> {$intervention->getActivite()->getLibelle()} numéro {$intervention->getId()} sur {$intervention->getMachine_code()} le {$intervention->getDh_debut()} </label>
             <input type="text" class="form-control" id="formGroupExampleInput" name="nouveauComment" placeholder="{$intervention->getCommentaire()}">
             <br>
-            <button type="submit" class="btn btn-primary">Mettre à jour</button> &nbsp;   
+            <button type="submit" class="btn btn-primary">Mettre à jour</button>  
         </div>
     </form> 
     <div class="mb-3">     
