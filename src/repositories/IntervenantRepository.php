@@ -173,5 +173,13 @@ class IntervenantRepository {
         $ligne = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         return $ligne;
     }
+    
+    public static function getGraph3() {
+        $sql = "SELECT * FROM ThirdGraph;";
+        $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
+        $stmt->execute();
+        $ligne = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $ligne;
+    }   
 
 }

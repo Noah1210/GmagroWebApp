@@ -12,13 +12,68 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <div>
         <canvas id="tpsInterv"></canvas>
+        
+    </div>
+    <div>
         <canvas id="tpsMachine"></canvas>
+    </div>
+    
+    <div>
+        <canvas id="tpsMachineInterv"></canvas>
+        <select id="intervenant">
+            {foreach $graph3 as $gr}
+                <option value="{$gr.totalTimeSpent}">
+                    {$gr.prenom}
+                </option>
+            {/foreach}
+            
+        </select>
     </div>
 
     <script>
 
         showGraph1();
         showGraph2();
+        showGraph3();
+        
+        function showGraph3() {
+            
+            const ctx = document.getElementById('tpsMachineInterv');
+
+            const myChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+        
+                    labels: [
+                        "eyo"
+                    ],
+        
+                    datasets: [
+        
+                        {
+                            data: [
+                                '10'
+                            ],
+                            hoverOffset: 4
+                        }
+        
+                    ]
+
+            }
+            }
+
+            );
+            
+            const intervenant = document.getElementById('intervenant');
+            intervenant.addEventListener('change', intervenantTracker);
+            function intervenantTracker(){
+                console.log(intervenant.value);
+                {*{foreach $graph3 as $gr}*}
+                        myChart.data.datasets[0].data[0] = intervenant.value;
+                        myChart.update();
+                {*{/foreach}*}
+            }
+        }
 
         function showGraph1() {
             const ctx = document.getElementById('tpsInterv');
@@ -47,6 +102,7 @@
             }
 
             );
+            }
       
         
         function showGraph2() {
@@ -74,14 +130,8 @@
                         }
         
                     ]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
+
+            }
             }
 
             );

@@ -26,6 +26,10 @@ class StatController extends IController {
         
         $graph2 = \repositories\IntervenantRepository::getGraph2();
         $this->smarty->assign('graph2', $graph2);
+        
+        $graph3 = \repositories\IntervenantRepository::getGraph3();
+        $this->smarty->assign('graph3', $graph3);
+        
         $this->smarty->display('stat/index_stat.tpl');
 //        foreach ($graph as $gr) {
 //            echo $gr['nom'];
