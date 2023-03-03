@@ -162,8 +162,24 @@ class IntervenantRepository {
         $sql = "SELECT * FROM FirstGraph;";
         $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
         $stmt->execute();
-        $ligne = $stmt->fetch(\PDO::FETCH_ASSOC);
+        $ligne = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         return $ligne;
     }
+    
+    public static function getGraph2() {
+        $sql = "SELECT * FROM SecondGraph;";
+        $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
+        $stmt->execute();
+        $ligne = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $ligne;
+    }
+    
+    public static function getGraph3() {
+        $sql = "SELECT * FROM ThirdGraph;";
+        $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
+        $stmt->execute();
+        $ligne = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $ligne;
+    }   
 
 }

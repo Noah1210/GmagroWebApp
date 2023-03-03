@@ -20,10 +20,20 @@ class StatController extends IController {
 
     private function run_index() {
         $_SESSION['navs'] = ["Stats" => "?uc=stat&action=index"];
+
+        $graph1 = \repositories\IntervenantRepository::getGraph1();
+        $this->smarty->assign('graph1', $graph1);
+        
+        $graph2 = \repositories\IntervenantRepository::getGraph2();
+        $this->smarty->assign('graph2', $graph2);
+        
+        $graph3 = \repositories\IntervenantRepository::getGraph3();
+        $this->smarty->assign('graph3', $graph3);
+        
         $this->smarty->display('stat/index_stat.tpl');
-        $graph = IntervenantRepository::getGraph1();
-        $this->smarty->assign('graph1', $graph);
-        echo $graph['nom'];
+//        foreach ($graph as $gr) {
+//            echo $gr['nom'];
+//        }
     }
 
 }

@@ -96,7 +96,7 @@ class IntervenantController extends IController {
 
     private function run_newpass() {
         $password1 = filter_input(INPUT_POST, 'password1', FILTER_SANITIZE_STRING);
-        $newPass = IntervenantController::newPass($password1);
+        $newPass = IntervenantRepository::newPass($password1);
         if ($newPass) {
             $this->smarty->assign('action', 'Votre mot de passe est bien changer');
             $this->smarty->display('intervenant/home_intervenant.tpl');
