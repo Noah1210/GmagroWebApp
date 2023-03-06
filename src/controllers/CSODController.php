@@ -18,8 +18,8 @@ class CSODController extends IController {
             case 'deleteCD':
                 $this->run_delete();
                 break;
-            case 'editCD':
-                $this->run_editCD();
+            case 'edit':
+                $this->run_edit();
                 break;
 
             default:
@@ -53,19 +53,53 @@ class CSODController extends IController {
         }
     }
 
-    private function run_editCD() {
+    private function run_edit() {
         $code = filter_input(INPUT_GET, 'code', FILTER_SANITIZE_STRING);
+        $type = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_STRING);
         $newCode = filter_input(INPUT_POST, 'codeCD', FILTER_SANITIZE_STRING);
         $newLib = filter_input(INPUT_POST, 'libCD', FILTER_SANITIZE_STRING);
         if ($newCode && $newLib) {
-//            $newCode = \repositories\CSODRepository::updateCD($newLib, $newCode);
-//            $newLib = \repositories\CSODRepository::updateCD($newLib, $newCode);
-//            $this->smarty->assign('newCode', $newCode);
-//             $this->smarty->assign('newLib', $newLib);
-//            $this->smarty->display('csod/edit_csod.tpl');
+            switch ($type) {
+                case 'CD':
+                    $res = \repositories\CSODRepository::updateCD($newLib, $newCode);
+                    break;
+                case 'CO':
+                    $res = \repositories\CSODRepository::updateCO($newLib, $newCode);
+                    break;
+                case 'SO':
+                    $res = \repositories\CSODRepository::updateSO($newLib, $newCode);
+                    break;
+                case 'SD':
+                    $res = \repositories\CSODRepository::updateSD($newLib, $newCode);
+                    break;
+            }
+
+            if ($res) {
+                header('Location: ?uc=csod&action=index');
+            } else {
+                $this->display_info("Modification CSOD", "Erreur dans la mise à jour", '?uc=csod&action=index');
+            }
         } else {
             $_SESSION['navs'] = ["CSOD" => "?uc=csod&action=edit"];
-            $CSOD = \repositories\CSODRepository::getCauseDefautByCode($code);
+            switch ($type) {
+                case 'CD':
+                    $CSOD = \repositories\CSODRepository::getCauseDefautByCode($code);
+                    $this->smarty->assign('typeCSOD', "CD");
+                    break;
+                case 'CO':
+                    $CSOD = \repositories\CSODRepository::getCauseObjetByCode($code);
+                    $this->smarty->assign('typeCSOD', "CO");
+                    break;
+                case 'SO':
+                    $CSOD = \repositories\CSODRepository::getSymptomeObjetByCode($code);
+                    $this->smarty->assign('typeCSOD', "SO");
+                    break;
+                case 'SD':
+                    $CSOD = \repositories\CSODRepository::getSymptomeDefautByCode($code);
+                    $this->smarty->assign('typeCSOD', "SD");
+                    break;
+            }
+
             $this->smarty->assign('CSOD', $CSOD);
             $this->smarty->display('csod/edit_csod.tpl');
         }

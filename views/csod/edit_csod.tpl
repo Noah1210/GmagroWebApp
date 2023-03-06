@@ -11,7 +11,7 @@
 {block contenu}
 
     <div class="mb-3">  
-        <form method="post" action="?uc=csod&action=edit">
+        <form method="post" action="?uc=csod&action=edit&type={$typeCSOD}">
             <div class="mb-3">
                 <label for="inputPassword2" class="visually-hidden">Password</label>
                 <input type="text" class="form-control" name="codeCD" value="{$CSOD->getCode()}">
@@ -19,7 +19,7 @@
             <br>
             <div class="mb-3">
                 <label for="inputPassword2" class="visually-hidden">Password</label>
-                <input type="codeCD" class="form-control" name="libCD" value="{$CSOD->getLibelle()}">
+                <input type="text" class="form-control" name="libCD" value="{$CSOD->getLibelle()}">
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Modifier</button>   

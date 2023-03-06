@@ -30,7 +30,7 @@
                                 <td>{$cf->getLibelle()}</td>
                                 {if $cf->isEditable()}
                                     <td>
-                                        <a href="?uc=csod&action=editCD&code={$cf->getCode()}"><i class="bi bi-pencil-square"></td>
+                                        <a href="?uc=csod&action=edit&type=CD&code={$cf->getCode()}"><i class="bi bi-pencil-square"></td>
                                     <td>
 
                                         <a href="?uc=csod&action=deleteCD&code={$cf->getCode()}"><i class="bi bi-trash3-fill"></i></a>
@@ -63,7 +63,7 @@
                                 {if $co->isEditable()} 
                                     <td>
 
-                                        <i class="bi bi-pencil-square"></td>
+                                        <a href="?uc=csod&action=edit&type=CO&code={$co->getCode()}&"><i class="bi bi-pencil-square"></td>
                                     <td>
 
                                         <a href="?uc=csod&action=deleteCO&code={$co->getCode()}"><i class="bi bi-trash3-fill"></i></a>
@@ -98,9 +98,9 @@
                                 <td>{$sd->getLibelle()}</td>
                                 {if $sd->isEditable()} 
                                     <td>
-                                        <i class="bi bi-pencil-square"></td>
+                                        <a href="?uc=csod&action=edit&type=SD&code={$sd->getCode()}&"><i class="bi bi-pencil-square"></td>
                                     <td>
-                                        <a href="?uc=csod&action=deleteSD&code={$co->getCode()}"><i class="bi bi-trash3-fill"></i></a>
+                                        <a href="?uc=csod&action=deleteSD&code={$sd->getCode()}"><i class="bi bi-trash3-fill"></i></a>
                                     </td>
                                 {/if}
                             </tr>
@@ -127,10 +127,10 @@
                                 <td>{$so->getLibelle()}</td>
                                 <td>
                                     {if $so->isEditable()} 
-                                        <i class="bi bi-pencil-square">
+                                        <a href="?uc=csod&action=edit&type=SO&code={$so->getCode()}&"><i class="bi bi-pencil-square"></td>
                                     </td>
                                     <td>
-                                        <a href="?uc=csod&action=deleteSO&code={$co->getCode()}"><i class="bi bi-trash3-fill"></i></a>
+                                        <a href="?uc=csod&action=deleteSO&code={$so->getCode()}"><i class="bi bi-trash3-fill"></i></a>
                                     </td>
                                 {/if}
                             </tr>
