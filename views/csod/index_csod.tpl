@@ -20,7 +20,6 @@
                             <th scope="col">Libelle</th>
                             <th scope="col">Editer</th>
                             <th scope="col">Supprimer</th>
-
                         </tr>
                     </thead>
                     <tbody>
@@ -30,10 +29,11 @@
                                 <td>{$cf->getLibelle()}</td>
                                 {if $cf->isEditable()}
                                     <td>
-                                        <a href="?uc=csod&action=edit&type=CD&code={$cf->getCode()}"><i class="bi bi-pencil-square"></td>
+                                        <a href="?uc=csod&action=edit&type=CD&code={$cf->getCode()}"><i class="bi bi-pencil-square"></i></a>
+                                    </td>
                                     <td>
 
-                                        <a href="?uc=csod&action=deleteCD&code={$cf->getCode()}"><i class="bi bi-trash3-fill"></i></a>
+                                        <a href="?uc=csod&action=deleteCSOD&code={$cf->getCode()}"><i class="bi bi-trash3-fill"></i></a>
 
                                     </td>
                                 {/if}
@@ -63,10 +63,10 @@
                                 {if $co->isEditable()} 
                                     <td>
 
-                                        <a href="?uc=csod&action=edit&type=CO&code={$co->getCode()}&"><i class="bi bi-pencil-square"></td>
+                                        <a href="?uc=csod&action=edit&type=CD&code={$co->getCode()}"><i class="bi bi-pencil-square"></a></td>
                                     <td>
 
-                                        <a href="?uc=csod&action=deleteCO&code={$co->getCode()}"><i class="bi bi-trash3-fill"></i></a>
+                                        <a href="?uc=csod&action=deleteCSOD&code={$co->getCode()}"><i class="bi bi-trash3-fill"></i></a>
                                     </td>
                                 {/if}
 
@@ -98,9 +98,9 @@
                                 <td>{$sd->getLibelle()}</td>
                                 {if $sd->isEditable()} 
                                     <td>
-                                        <a href="?uc=csod&action=edit&type=SD&code={$sd->getCode()}&"><i class="bi bi-pencil-square"></td>
+                                        <a href="?uc=csod&action=edit&type=SD&code={$sd->getCode()}"><i class="bi bi-pencil-square"></a></td>
                                     <td>
-                                        <a href="?uc=csod&action=deleteSD&code={$sd->getCode()}"><i class="bi bi-trash3-fill"></i></a>
+                                        <a href="?uc=csod&action=deleteCSOD&code={$sd->getCode()}"><i class="bi bi-trash3-fill"></i></a>
                                     </td>
                                 {/if}
                             </tr>
@@ -127,10 +127,10 @@
                                 <td>{$so->getLibelle()}</td>
                                 <td>
                                     {if $so->isEditable()} 
-                                        <a href="?uc=csod&action=edit&type=SO&code={$so->getCode()}&"><i class="bi bi-pencil-square"></td>
+                                        <a href="?uc=csod&action=edit&type=SO&code={$so->getCode()}"><i class="bi bi-pencil-square"></a></td>
                                     </td>
                                     <td>
-                                        <a href="?uc=csod&action=deleteSO&code={$so->getCode()}"><i class="bi bi-trash3-fill"></i></a>
+                                        <a href="?uc=csod&action=deleteCSOD&code={$so->getCode()}"><i class="bi bi-trash3-fill"></i></a>
                                     </td>
                                 {/if}
                             </tr>
@@ -138,8 +138,31 @@
                     </tbody>
                 </table>
             </div>
+            <form method="post" action="?uc=csod&action=add">
 
-        </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label"></label>
+                    <input type="text" class="form-control" name="code" placeholder="ENtrer le code"> 
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label"></label>
+                    <input type="text" class="form-control" name="libelle" placeholder="ENtrer le libellé">
+                </div>
+
+                <select name ="typeCSOD" class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="CD">Cause defaut</option>
+                    <option value="CO">Cause objet</option>
+                    <option value="SD">Symptome defaut</option>
+                    <option value="SO">Symptome objet</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Ajouter CSOD</button>
+            </form>
+
+        </div>  
     </div>
+
 
 {/block}

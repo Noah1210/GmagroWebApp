@@ -15,11 +15,14 @@ class CSODController extends IController {
             case 'index':
                 $this->run_index();
                 break;
-            case 'deleteCD':
+            case 'deleteCSOD':
                 $this->run_delete();
                 break;
             case 'edit':
                 $this->run_edit();
+                break;
+            case 'add':
+                $this->run_add();
                 break;
 
             default:
@@ -33,6 +36,7 @@ class CSODController extends IController {
         $causeobjets = \repositories\CSODRepository::getCauseObjet();
         $symptomedefauts = \repositories\CSODRepository::getSymptomeDef();
         $symptomeobjets = \repositories\CSODRepository::getSymptomeObj();
+
         $this->smarty->assign('causedefauts', $causedefauts);
         $this->smarty->assign('causeobjets', $causeobjets);
         $this->smarty->assign('symptomedefauts', $symptomedefauts);
@@ -102,6 +106,33 @@ class CSODController extends IController {
 
             $this->smarty->assign('CSOD', $CSOD);
             $this->smarty->display('csod/edit_csod.tpl');
+        }
+    }
+
+    private function run_add() {
+
+        $code = filter_input(INPUT_POST, 'code', FILTER_SANITIZE_STRING);
+        $libelle = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_STRING);
+        $type = filter_input(INPUT_POST, 'typeCSOD', FILTER_SANITIZE_STRING);
+        if ($code && $libelle) {
+            switch ($type) {
+                case 'CD':
+                    $res = \repositories\CSODRepository::addCSOD($code, $libelle, $type);
+                    header('Location: ?uc=csod&action=index');
+                    break;
+                case 'CO':
+                    $res = \repositories\CSODRepository::addCSOD($code, $libelle, $type);
+                    header('Location: ?uc=csod&action=index');
+                    break;
+                case 'SO':
+                    $res = \repositories\CSODRepository::addCSOD($code, $libelle, $type);
+                    header('Location: ?uc=csod&action=index');
+                    break;
+                case 'SD':
+                    $res = \repositories\CSODRepository::addCSOD($code, $libelle, $type);
+                    header('Location: ?uc=csod&action=index');
+                    break;
+            }
         }
     }
 
