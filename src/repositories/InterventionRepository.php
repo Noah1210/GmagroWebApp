@@ -25,7 +25,7 @@ class InterventionRepository {
     }
 
     public static function deleteInterventions($id) {
-        $sql = "delete from intervention_intervenant  where intervention_id=:id";
+        $sql = "delete from intervention_intervenant  where intervention_id=:id ";
         $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
         $stmt->bindParam(":id", $id);
         $res = $stmt->execute();
