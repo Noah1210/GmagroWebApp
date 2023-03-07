@@ -20,10 +20,10 @@
                 <th scope="col">Supprimer</th>
             </tr>
         </thead>
-        <tbody> 
+        <tbody>
+
             {foreach $typeM as $t}
                 <tr>
-
                     <th scope="row">1</th>
                     <td>{$t->getCode()}</td>
                     <td>Otto</td>
