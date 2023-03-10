@@ -33,5 +33,8 @@ class Machine {
     public function getType_machine_code() {
         return $this->type_machine_code;
     }
+    public function getTypeMachine() {
+        return \repositories\TypeMachineRepository::getTMachineByCode($this->type_machine_code);
+    }
 
 }

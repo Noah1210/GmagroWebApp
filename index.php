@@ -51,8 +51,8 @@ switch ($uc) {
         $csodController->run($action);
         break;
     case 'machine':
-        $typemachineController = new \controllers\TypeMachineController($smarty);
-        $typemachineController->run($action);
+        $machineController = new \controllers\MachineController($smarty);
+        $machineController->run($action);
         break;
     case 'stat':
         $statController = new \controllers\StatController($smarty);

@@ -22,27 +22,43 @@
         </thead>
         <tbody>
 
-            {foreach $typeM as $t}
+            {foreach $machines as $m}
                 <tr>
-                    <th scope="row">1</th>
-                    <td>{$t->getCode()}</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+
+                    <td>
+                        <img src="photos/5fdb7a275d552.jpeg"/>
+                    </td>
+                    <td>{$m->getCode()}</td>
+                    <td>{$m->getDate_fabrication()}</td>
+                    <td>{$m->getNumero_serie()}</td>
+                    <td>{$m->getTypeMachine()->getNom()}</td>
+                    <td class="text-center">
+                        <a href="?uc=machine&action=delete&code={$m->getCode()}"><i class="bi bi-trash3-fill"></i></a>
+                    </td>
+                   
                 </tr>
             {/foreach}
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-
         </tbody>
-    </table>
+        
+    </table>   
+    <button class="btn btn-primary" type="submit" style="width: 150px"><i class="bi bi-plus-circle"></i></button>
+    <form>
+
+
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"></label>
+            <input type="text" class="form-control" style="width: 150px" name="code" placeholder="Code"> 
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"></label>
+            <input type="text" class="form-control" style="width: 150px" name="serial" placeholder="Serial">
+        </div>
+        <select name ="type" class="form-select" style="width: 150px" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="SD">Machine</option>
+                    <option value="SO">Type machine</option>
+                </select>
+                </select>
+    </form>
 
 {/block}

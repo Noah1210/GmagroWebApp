@@ -142,13 +142,13 @@
 
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label"></label>
-                    <input type="text" class="form-control" name="code" placeholder="ENtrer le code"> 
+                    <input type="text" class="form-control" name="code" placeholder="Entrer le code"> 
                 </div>
 
 
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label"></label>
-                    <input type="text" class="form-control" name="libelle" placeholder="ENtrer le libellé">
+                    <input type="text" class="form-control" name="libelle" placeholder="Entrer le libellé">
                 </div>
 
                 <select name ="typeCSOD" class="form-select" aria-label="Default select example">
