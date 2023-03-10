@@ -26,7 +26,7 @@
                 <tr>
 
                     <td>
-                        <img src="photos/5fdb7a275d552.jpeg"/>
+                        <img src="photos/{$m->getTypeMachine()->getPhoto()}"/>
                     </td>
                     <td>{$m->getCode()}</td>
                     <td>{$m->getDate_fabrication()}</td>
@@ -53,7 +53,7 @@
             <label for="exampleInputPassword1" class="form-label"></label>
             <input type="text" class="form-control" style="width: 150px" name="serial" placeholder="Serial">
         </div>
-        <select name ="type" class="form-select" style="width: 150px" aria-label="Default select example">
+        <select name ="type" class="form-select"style="width: 150px" aria-label="Default select example">
                     <option selected>Open this select menu</option>
                     <option value="SD">Machine</option>
                     <option value="SO">Type machine</option>
