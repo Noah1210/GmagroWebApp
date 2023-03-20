@@ -24,14 +24,14 @@ class MachineRepository {
     }
 
     public static function addMachines($code, $site_uai, $date_fabrication, $numero_serie, $type_machine_code) {
-        $sql = "insert into machine(code, site_uai,date_fabrication,numero_serie,type_machine_code)values(:code, :site_uai, :date_fabrication, :numero_site,:type_machine_code)";
+        $sql = "insert into machine(code, site_uai,date_fabrication,numero_serie,type_machine_code)values(:code, :site_uai, :date_fabrication, :numero_serie,:type_machine_code)";
         $stmt = PdoBD::getInstance()->getMonPdo()->prepare($sql);
         $stmt->bindValue(":code", $code);
         $stmt->bindValue(":site_uai", $site_uai);
         $stmt->bindValue(":date_fabrication", $date_fabrication);
-        $stmt->bindValue(":numero_site", $numero_serie);
+        $stmt->bindValue(":numero_serie", $numero_serie);
         $stmt->bindValue(":type_machine_code", $type_machine_code);
-
+        //$stmt->debugDumpParams();
         return $stmt->execute();
     }
 
