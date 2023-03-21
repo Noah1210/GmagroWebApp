@@ -42,7 +42,7 @@
 
     </table>  
     <div class="col-auto"> 
-        <button class="btn btn-primary" type="submit" ><i class="bi bi-plus-circle"> Ajouter type machine</i></button>
+      <a  class="btn btn-primary" href="?uc=machine&action=showTypeMachine"><i class="bi bi-plus-circle"> Ajouter type machine</i></a>
     </div>
         <form method="post" action="?uc=machine&action=addMachines" class="row g-3">
         <div class="col-auto">

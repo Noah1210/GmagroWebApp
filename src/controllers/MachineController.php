@@ -19,6 +19,12 @@ class MachineController extends IController {
             case 'addMachines':
                 $this->run_add();
                 break;
+            case 'showTypeMachine':
+                $this->run_showTMachines();
+                break;
+            case 'addTypeMachine':
+                $this->run_addTMachines();
+                break;
             default:
                 $this->run_default_case("Machine", "?uc=machine&action=index");
         }
@@ -55,6 +61,26 @@ class MachineController extends IController {
             header('Location: ?uc=machine&action=index');
         } else {
             $this->display_info("Problème d'url", "La machine n'a pas été ajouté.", "index.php");
+        }
+    }
+
+    private function run_showTMachines() {
+        $this->smarty->display('machine/add_type_machine.tpl');
+    }
+
+    private function run_addTMachines() {
+        $code = filter_input(INPUT_POST, 'code', FILTER_SANITIZE_STRING);
+        $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_STRING);
+        $photoName = $_FILES['photo']['name'];
+        $photo = $_FILES['photo']['tmp_name'];
+        move_uploaded_file($photo, 'photos/' . $photoName);
+        $site_uai = $_SESSION['admin']['site_uai'];
+        
+        $addTMachines = \repositories\TypeMachineRepository::addTMachines($code, $site_uai, $nom, $photoName);
+        if ($addTMachines) {
+            header('Location: ?uc=machine&action=index');
+        } else {
+            $this->display_info("Problème d'url", "Le type machine n'a pas été ajouté.", "index.php");
         }
     }
 
