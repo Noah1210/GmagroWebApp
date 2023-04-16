@@ -49,8 +49,8 @@ class TypeMachineRepository {
         $stmt->bindValue(":nom", $nom);
         $stmt->bindValue(":photo", $photo);
         $stmt->bindValue(":site_uai", $site_uai);
-        $stmt->debugDumpParams();
         return $stmt->execute();
+        
     }
 
 }

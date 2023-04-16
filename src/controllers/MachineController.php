@@ -32,6 +32,10 @@ class MachineController extends IController {
 
     private function run_index() {
         $_SESSION['navs'] = ["Machines" => "?uc=machine&action=index"];
+        $code = filter_input(INPUT_GET, 'codeMachine', FILTER_SANITIZE_STRING);
+        if ($code != null) {
+            $this->smarty->assign('codeMachine', $code);
+        }
         $machines = \repositories\MachineRepository::getMachines();
         $this->smarty->assign('machines', $machines);
         $typeMachines = \repositories\TypeMachineRepository::getTMachineBySite();
@@ -75,10 +79,11 @@ class MachineController extends IController {
         $photo = $_FILES['photo']['tmp_name'];
         move_uploaded_file($photo, 'photos/' . $photoName);
         $site_uai = $_SESSION['admin']['site_uai'];
-        
+
         $addTMachines = \repositories\TypeMachineRepository::addTMachines($code, $site_uai, $nom, $photoName);
+
         if ($addTMachines) {
-            header('Location: ?uc=machine&action=index');
+            header('Location: ?uc=machine&action=index&codeMachine=' . $code);
         } else {
             $this->display_info("Problème d'url", "Le type machine n'a pas été ajouté.", "index.php");
         }

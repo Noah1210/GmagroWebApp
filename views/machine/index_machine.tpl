@@ -42,9 +42,9 @@
 
     </table>  
     <div class="col-auto"> 
-      <a  class="btn btn-primary" href="?uc=machine&action=showTypeMachine"><i class="bi bi-plus-circle"> Ajouter type machine</i></a>
+        <a  class="btn btn-primary" href="?uc=machine&action=showTypeMachine"><i class="bi bi-plus-circle"> Ajouter type machine</i></a>
     </div>
-        <form method="post" action="?uc=machine&action=addMachines" class="row g-3">
+    <form method="post" action="?uc=machine&action=addMachines" class="row g-3">
         <div class="col-auto">
             <label class="visually-hidden"></label>
             <input type="text"  class="form-control" name="code" placeholder="Code">
@@ -60,7 +60,13 @@
         <div class="col-auto">
             <select name ="typeMachine" class="form-select" aria-label="Default select example">
                 {foreach $typeMachines as $typeM}
-                    <option value="{$typeM->getCode()}">{$typeM->getNom()}</option>
+
+                    {if $codeMachine == $typeM->getCode()}
+                        <option selected value="{$typeM->getCode()}">{$typeM->getNom()}</option>
+                    {else}
+                        <option value="{$typeM->getCode()}">{$typeM->getNom()}</option>
+                    {/if}
+
                 {/foreach}
             </select>
         </div>

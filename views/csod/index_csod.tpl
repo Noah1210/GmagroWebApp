@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col">
                 Cause défaut
-                <table class="table">
+                <table class="table" style="height: 300px;display: block;overflow-y: scroll;">
                     <thead>
                         <tr>
                             <th scope="col">Code</th>
@@ -45,7 +45,7 @@
             </div>
             <div class="col">
                 Cause objet
-                <table class="table">
+                <table class="table" style="height: 300px;display: block;overflow-y: scroll;">
                     <thead>
                         <tr>
                             <th scope="col">Code</th>
@@ -81,7 +81,7 @@
         <div class="row">
             <div class="col">
                 Symptome défaut
-                <table class="table">
+                <table class="table" style="height: 300px;display: block;overflow-y: scroll;">
                     <thead>
                         <tr>
                             <th scope="col">Code</th>
@@ -110,7 +110,7 @@
             </div>
             <div class="col">
                 Symptome objet
-                <table class="table">
+                <table class="table" style="height: 300px;display: block;overflow-y: scroll;">
                     <thead>
                         <tr>
                             <th scope="col">Code</th>
@@ -138,27 +138,29 @@
                     </tbody>
                 </table>
             </div>
-            <form method="post" action="?uc=csod&action=add">
+            <form method="post" action="?uc=csod&action=add" class="row g-3">
 
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label"></label>
+                <div class="col-auto">
+                    <label class="visually-hidden"></label>
                     <input type="text" class="form-control" name="code" placeholder="Entrer le code"> 
                 </div>
 
-
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label"></label>
+                <div class="col-auto">
+                    <label class="visually-hidden"></label>
                     <input type="text" class="form-control" name="libelle" placeholder="Entrer le libellé">
                 </div>
-
-                <select name ="typeCSOD" class="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
-                    <option value="CD">Cause defaut</option>
-                    <option value="CO">Cause objet</option>
-                    <option value="SD">Symptome defaut</option>
-                    <option value="SO">Symptome objet</option>
-                </select>
-                <button type="submit" class="btn btn-primary">Ajouter CSOD</button>
+                <div class="col-auto">
+                    <select name ="typeCSOD" class="form-select">
+                        <option selected></option>
+                        <option value="CD">Cause defaut</option>
+                        <option value="CO">Cause objet</option>
+                        <option value="SD">Symptome defaut</option>
+                        <option value="SO">Symptome objet</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Ajouter CSOD</button>
+                </div>
             </form>
 
         </div>  
